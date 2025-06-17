@@ -1,3 +1,5 @@
+import { logs } from './logs/logs.js'
+
 export const services = app => {
-  // All services will be registered here
+  app.configure(logs);
 }
