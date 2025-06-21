@@ -1,8 +1,6 @@
-const axios = require('axios');
+const forwardRequest = require('../../utils/forward-request.js');
 
 module.exports = async function find(req, res) {
-  const response = await axios.get(`http://feathers-logs-service:8081${req.path}`, {
-    params: req.query,
-  });
+  const response = await forwardRequest(req);
   return res.status(response.status).send(response.data);
 };
