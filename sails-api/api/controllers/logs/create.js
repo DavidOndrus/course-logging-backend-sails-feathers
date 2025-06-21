@@ -1,6 +1,11 @@
 const forwardRequest = require('../../utils/forward-request.js');
 
 module.exports = async function create(req, res) {
+  if (req.body.type !== 'system' || req.body.level < 3
+  || !req.body.text?.startsWith('Battery')) {
+    return res.badRequest();
+  }
+
   const response = await forwardRequest(req);
   return res.status(response.status).send(response.data);
 };

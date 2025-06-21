@@ -12,8 +12,8 @@ export const logsSchema = {
     text: { type: 'string' },
     level: {
       type: 'number',
-      minimum: 1,
-      maximum: 9,
+      minimum: 0,
+      maximum: 7,
     },
     time: { type: 'string' },
     type: { enum: ['system', 'user'] },
