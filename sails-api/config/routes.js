@@ -39,4 +39,6 @@ module.exports.routes = {
   'GET /logs': 'logs/find',
 
   'POST /users': 'users/create',
+
+  'POST /authentication': 'authentication/create',
 };
