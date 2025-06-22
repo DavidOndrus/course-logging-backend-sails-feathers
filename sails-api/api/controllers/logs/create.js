@@ -6,6 +6,6 @@ module.exports = async function create(req, res) {
     return res.badRequest();
   }
 
-  const response = await forwardRequest(req);
+  const response = await forwardRequest(sails.config.services.logs.url, req);
   return res.status(response.status).send(response.data);
 };
