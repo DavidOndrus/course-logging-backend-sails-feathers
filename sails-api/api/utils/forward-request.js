@@ -6,5 +6,8 @@ module.exports = function forwardRequest(url, request) {
     url: `${url}${request.path}`,
     data: request.body,
     params: request.query,
+    headers: {
+      Authorization: request.headers.authorization
+    },
   });
 }
