@@ -1,3 +1,5 @@
+import { authenticate } from '@feathersjs/authentication'
+
 import { hooks as schemaHooks } from '@feathersjs/schema'
 import {
   logsCreateValidator,
@@ -23,7 +25,7 @@ export const logs = app => {
 
   app.service(logsPath).hooks({
     around: {
-      all: [schemaHooks.resolveExternal(logsExternalResolver), schemaHooks.resolveResult(logsResolver)]
+      all: [authenticate('jwt'), schemaHooks.resolveExternal(logsExternalResolver), schemaHooks.resolveResult(logsResolver)]
     },
     before: {
       all: [schemaHooks.validateQuery(logsQueryValidator), schemaHooks.resolveQuery(logsQueryResolver)],

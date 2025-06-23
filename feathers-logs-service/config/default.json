@@ -9,5 +9,12 @@
     "default": 10,
     "max": 50
   },
-  "mongodb": "mongodb://mongo:27017/logging-backend"
+  "mongodb": "mongodb://mongo:27017/logging-backend",
+  "authentication": {
+    "entity": null,
+    "secret": "Oi8AOo1uoC3vDf7H+ogRk/5wRikQcJi5",
+    "authStrategies": [
+      "jwt"
+    ]
+  }
 }
