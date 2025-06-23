@@ -1,0 +1,196 @@
+{
+	"info": {
+		"_postman_id": "38e4996d-1c94-4a43-b96d-b4cbb2d2196c",
+		"name": "logging-backend-sails-feathers",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8337854"
+	},
+	"item": [
+		{
+			"name": "API Health Check",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/health",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"health"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create log",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE3NTA3MDQ0NTAsImV4cCI6NDg3NDkwNjg1MCwiYXVkIjoiaHR0cHM6Ly95b3VyZG9tYWluLmNvbSIsInN1YiI6IjY4NTgyOWQ4YTlhZWRjMmMxZmMxMjQ2YiIsImp0aSI6IjFmMDYwMTc2LTI1OWQtNGY2NC05NGNkLTUxMmZjZDUyYjc3YSJ9.Pw-WUyxitlWK1MB1L-P77ce00F6RWHY52hB_i0pr5m0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"text\": \"Battery: {{$randomInt}}\",\r\n    \"time\": \"2025-02-02T02:02:02.222Z\",\r\n    \"level\": 3,\r\n    \"type\": \"system\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/logs",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get logs",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE3NTA3MDQ2NTUsImV4cCI6NDg3NDkwNzA1NSwiYXVkIjoiaHR0cHM6Ly95b3VyZG9tYWluLmNvbSIsInN1YiI6IjY4NTgyOWMyYTlhZWRjMmMxZmMxMjQ2YSIsImp0aSI6ImJiYzI2NmRkLTE4YzAtNDYxYS1iMjYwLWJkYTliOTI5MzA2ZSJ9.ydQstMw88bhITncNYFkL4vbV3nGsVFkb-sJiDVP9nR8",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/logs?$limit=10&$skip=0",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logs"
+					],
+					"query": [
+						{
+							"key": "$limit",
+							"value": "10"
+						},
+						{
+							"key": "$skip",
+							"value": "0"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create user",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"cameras@example.com\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/users",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - email, password",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"strategy\": \"local\",\r\n    \"email\": \"technician@example.com\",\r\n    \"password\": \"test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/authentication",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"strategy\": \"jwt\",\r\n    \"accessToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6ImFjY2VzcyJ9.eyJpYXQiOjE3NTA2MDY2NDksImV4cCI6MTc1MDY5MzA0OSwiYXVkIjoiaHR0cHM6Ly95b3VyZG9tYWluLmNvbSIsInN1YiI6IjY4NTgwZTM5ZjMxMTRmZDRjOTU4NWMwYSIsImp0aSI6IjMyOTA0NGZlLWI0OWEtNGE3ZS05YzZiLWJmNjk0YTYyOWMzMyJ9.Dxly_D8dCRoDUN38TAEm-SMcVrRidg2xACiOE30B2xc\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/authentication",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"authentication"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
