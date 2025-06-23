@@ -15,6 +15,14 @@
     "secret": "Oi8AOo1uoC3vDf7H+ogRk/5wRikQcJi5",
     "authStrategies": [
       "jwt"
-    ]
+    ],
+    "jwtOptions": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://yourdomain.com",
+      "algorithm": "HS256",
+      "expiresIn": "99y"
+    }
   }
 }
