@@ -38,7 +38,7 @@ module.exports.routes = {
   'POST /logs': 'logs/create',
   'GET /logs': 'logs/find',
 
-  'POST /users': 'users/create',
+  'POST /users': 'users/create', // TODO comment/disable/remove once users are created or force authentication in Feathers to not keep security hole
 
   'POST /authentication': 'authentication/create',
 };
